@@ -19,7 +19,7 @@ def check_if_id_exists(num,teams):
 def convert_str_to_int(num):
     try:
         num = int(num)
-        if num < 0:
+        if num <= 0:
             print("id must be a positive number")
             return False
         return True

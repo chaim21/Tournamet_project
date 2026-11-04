@@ -1,4 +1,9 @@
-teams=[]
+teams=[{"id": 1, "name": "Maccabi", "played": 4,
+     "wins": 2, "draws": 1, "losses": 1,
+     "goals_for": 6, "goals_against": 4, "points": 7},
+    {"id": 2, "name": "Hapoel", "played": 4,
+     "wins": 0, "draws": 0, "losses": 4,
+     "goals_for": 2, "goals_against": 8, "points": 0}]
 from Validation import *
 
 def add_team():
@@ -10,7 +15,7 @@ def add_team():
     valid_id = False
     while not valid_id:
         id_team = input("enter team id: \n")
-        if convert_str_to_int(id_team) and check_if_id_exists(id_team,teams):
+        if convert_str_to_int(id_team) and check_if_id_exists(int(id_team),teams):
             valid_id = True
     
     team = {"id": id_team, "name": name,"played": 0,
@@ -19,6 +24,12 @@ def add_team():
     teams.append(team)
     return team
 
+def show_teams(teams):
+    if not teams:
+        print("No teams to display")
+    else:
+        for team in teams:
+            print(f"id: {team["id"]}, name: {team["name"]}, played: {team["played"]}, points: {team["points"]}\n",end="")
 def print_menu():
     print("========== TOURNAMENT MANAGER ==========")
     print("1. Add team")
@@ -36,4 +47,5 @@ def print_menu():
 
 def main():
     add_team()
-    print(teams[0])
+    show_teams(teams)
+main()
